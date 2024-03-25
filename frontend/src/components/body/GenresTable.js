@@ -4,18 +4,17 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 
-
 const elementStyles = {
   height: "40px",
-  width: '100%', // Adjusted to fill the column
+  width: "100%",
   color: "#6083a3",
   borderRadius: "8px",
   border: "2px solid #6083a3",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  background: "transparent", // To make the button blend with the background
-  cursor: "pointer", // To change cursor on hover
+  background: "transparent",
+  cursor: "pointer",
 };
 
 const GenreList = [
@@ -33,8 +32,8 @@ const GenreList = [
   "Business",
   "Marketing",
   "Economic",
-
 ];
+
 function GenresTable() {
   const navigate = useNavigate();
 
@@ -42,17 +41,16 @@ function GenresTable() {
     navigate(path);
   };
 
-
   const genreRows = [];
   for (let i = 0; i < GenreList.length; i += 2) {
     genreRows.push(
       <Row key={i} className="m-3">
-        <Col xs={6} className="font-weight-bold">
-          <button onClick={() => handleNavigate('/login')} style={elementStyles}>{GenreList[i]}</button>
+        <Col xs={12} md={6} className="font-weight-bold">
+          <button onClick={() => handleNavigate("/login")} style={elementStyles}>{GenreList[i]}</button>
         </Col>
         {i + 1 < GenreList.length && (
-          <Col xs={6} className="font-weight-bold">
-            <button onClick={() => handleNavigate('/login')} style={elementStyles}>{GenreList[i + 1]}</button>
+          <Col xs={12} md={6} className="font-weight-bold">
+            <button onClick={() => handleNavigate("/login")} style={elementStyles}>{GenreList[i + 1]}</button>
           </Col>
         )}
       </Row>
@@ -60,8 +58,8 @@ function GenresTable() {
   }
 
   return (
-    <div className="m-auto" style={{ height: '25rem' }}>
-      <Container className="justify-content-center mt-2">
+    <div className="m-auto d-none d-md-block" style={{ minHeight: "25rem" }}> {/* Hide on xs and show on larger screens */}
+      <Container fluid className="justify-content-center mt-2">
         {genreRows}
       </Container>
     </div>

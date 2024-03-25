@@ -54,7 +54,7 @@ function App() {
           element={isLoggedIn ? <ForumPage /> : <Login setUser={handleLogin} />}
         />
         <Route path="/profile" element={<Profile user={user} />} />
-        <Route path='listing' element= {<ListBookPage user={user} />} />
+        <Route path='/listing' element= {<ListBookPage user={user} />} />
       </Routes>
     </div>
   );

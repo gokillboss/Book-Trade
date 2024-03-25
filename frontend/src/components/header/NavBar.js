@@ -20,11 +20,9 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
         bg="white"
         variant="dark"
         className="d-flex justify-content-between"
+        expand="lg" // Add expand="lg" to make it responsive
       >
-        <Link
-          to="/"
-          className="navbar-brand d-flex align-items-center ml-2"
-        >
+        <Link to="/" className="navbar-brand d-flex align-items-center ml-2">
           <img
             src={require("../../pictures/Logo_Book.png")}
             alt="Logo"
@@ -38,74 +36,77 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
           </span>
         </Link>
 
-        <Form
-          inline
-          className="mr-4 d-flex align-items-center"
-          style={{ width: "35%" }}
-        >
-          <FormControl
-            type="text"
-            placeholder="Search"
-            className="mr-sm-2"
-          />
-          <Button
-            style={{ backgroundColor: "lightblue", borderColor: "#6083a3" }}
-          >
-            <FontAwesomeIcon icon={faSearch} />
-          </Button>
-        </Form>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" /> {/* Toggle button for responsiveness */}
 
-        <div className="mr-3">
-          {isLoggedIn ? (
-            <>
-              <Link to="profile">
+        <Navbar.Collapse id="basic-navbar-nav"> {/* Collapsible content */}
+          <Form
+            inline
+            className="mr-auto my-2 my-lg-0 d-flex align-items-center"
+          >
+            <FormControl
+              type="text"
+              placeholder="Search"
+              className="mr-sm-2"
+            />
+            <Button
+              style={{ backgroundColor: "lightblue", borderColor: "#6083a3" }}
+            >
+              <FontAwesomeIcon icon={faSearch} />
+            </Button>
+          </Form>
+
+          <div className="mr-3">
+            {isLoggedIn ? (
+              <>
+                <Link to="profile">
+                  <Button
+                    variant="primary"
+                    style={{
+                      backgroundColor: "lightblue",
+                      borderColor: "#6083a3",
+                    }}
+                  >
+                    Profile
+                  </Button>
+                </Link>
                 <Button
                   variant="primary"
-                  style={{
-                    backgroundColor: "lightblue",
-                    borderColor: "#6083a3",
-                  }}
-                >
-                  Profile
-                </Button>
-              </Link>
-              <Button
-                variant="primary"
-                onClick={handleLogout} // Call handleLogout on logout button click
-                style={{
-                  backgroundColor: "lightblue",
-                  borderColor: "#6083a3",
-                  margin: "5px",
-                }}
-              >
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              <Link to="/login">
-                <Button
-                  variant="primary"
+                  onClick={handleLogout}
                   style={{
                     backgroundColor: "lightblue",
                     borderColor: "#6083a3",
                     margin: "5px",
                   }}
                 >
-                  Login
+                  Logout
                 </Button>
-              </Link>
-              <Link to="/sign-up">
-                <Button
-                  variant="primary"
-                  style={{ backgroundColor: "lightblue", borderColor: "#6083a3" }}
-                >
-                  Sign Up
-                </Button>
-              </Link>
-            </>
-          )}
-        </div>
+              </>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button
+                    variant="primary"
+                    style={{
+                      backgroundColor: "lightblue",
+                      borderColor: "#6083a3",
+                      margin: "5px",
+                    }}
+                  >
+                    Login
+                  </Button>
+                </Link>
+                <Link to="/sign-up">
+                  <Button
+                    variant="primary"
+                    style={{ backgroundColor: "lightblue", borderColor: "#6083a3" }}
+                  >
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            )}
+          </div>
+        </Navbar.Collapse>
       </Navbar>
     </div>
   );
