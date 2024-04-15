@@ -5,7 +5,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors');
 const dotenv = require('dotenv');
-const User = require('./models/User'); // Update the path as per your project structure
+const User = require('./models/User'); 
 
 dotenv.config();
 
